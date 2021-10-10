@@ -38,7 +38,6 @@ class DashboardServiceImplement implements DashboardService {
     {
         $this->checkType($request);
         $type = $request->type;
-        Cache::flush();
         $data = Cache::remember('dataDashboard',now()->addMinutes(5),function() use($type)
         {
             return  $this->pemilihRepository->DB()
@@ -66,7 +65,6 @@ class DashboardServiceImplement implements DashboardService {
     public function Chart($request){
         $this->checkType($request);
         $type = $request->type;
-        Cache::flush();
 
         $jumlahsuara   = Cache::remember('getJumlahSuara',now()->addMinutes(5),function() use ($type){
             return $this->kandidatRepository->getWhereType($type,['nama','jumlahsuara']);
