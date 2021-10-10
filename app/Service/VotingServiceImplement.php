@@ -77,9 +77,10 @@ class VotingServiceImplement implements VotingService
     }
     public function statusVoting($request)
     {
-        $result = Cache::remember("getStatus_".$data->session()->get('token'),now()->addSeconds(3),function() use($request){
+        $result = Cache::remember("getStatus_".$request->session()->get('token'),now()->addSeconds(3),function() use($request){
             return $this->pemilihRepository->whereUsername($request->session()->get('token'),['status_osis','status_mpk']);
         });
+
         if($result->status_osis == 2)
         {
             $result->status_osis = false;
@@ -93,7 +94,7 @@ class VotingServiceImplement implements VotingService
             $result->status_mpk = false;
         } 
         else if($result->status_mpk == 1){
-            $result->status_osis = true;
+            $result->status_mpk = true;
         }
         return response()->json([
             'success' => true,

@@ -43,7 +43,7 @@ class PemilihRepositoryImplement implements PemilihRepository{
     }
     public function WhereUsername($username,$select)
     {
-        return $this->db->select($select)->where('username',$username)->first();
+        return Pemilih::select($select)->where('username',$username)->first();
         
     }
 }
