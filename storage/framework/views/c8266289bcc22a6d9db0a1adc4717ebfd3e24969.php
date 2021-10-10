@@ -1,0 +1,1 @@
+400 ERROR SORRY<?php /**PATH C:\xampp\htdocs\laravel-evoting\resources\views/errors/400.blade.php ENDPATH**/ ?>
