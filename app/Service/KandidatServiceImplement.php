@@ -2,7 +2,7 @@
 namespace App\Service;
 use Illuminate\Support\Facades\DB;
 use App\Kandidat;
-
+use Illuminate\Support\Facades\Cache;
 use App\Repository\KandidatRepository;
 
 class KandidatServiceImplement implements KandidatService {
@@ -15,9 +15,9 @@ class KandidatServiceImplement implements KandidatService {
     public function getKandidat()
     {
         try{
-
-        $osis = $this->kandidatRepository->getWhereType('osis');
-		$mpk = $this->kandidatRepository->getWhereType('mpk');
+        
+        $osis = Cache::remember('getKandidatOsis',now()->addSeconds(3),function(){ return $this->kandidatRepository->getWhereType('osis'); });
+		$mpk = Cache::remember('getKandidatMpk',now()->addSeconds(3),function(){ return $this->kandidatRepository->getWhereType('mpk'); });
 
         if($osis == true && $mpk == true){
 

@@ -27,7 +27,7 @@
                         @endif
                     @csrf
                         @if ($errors->any())
-                        <div class="flex justify-center mt-3 rounded-r-lg text-white bg-red-700">
+                        <div class="flex justify-center mt-3 rounded-lg text-white bg-red-700">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -35,12 +35,17 @@
                             </ul>
                         </div>
                         @endif
-                        @if (Session::has('Gagal') | Session::has('Success'))
-                        <div class=" flex justify-center mt-3 bg-green-700 text-white rounded-r-lg">
+                        @if (Session::has('Gagal'))
+                        <div class=" flex justify-center mt-3 bg-red-700 text-white rounded-lg">
                             <ul>
                                     @if(Session::has('Gagal'))
                                     <li>{{Session::get('Gagal')}}</li>
                                     @endif
+                            </ul>
+                        </div>
+                        @elseif(Session::has('Success'))
+                        <div class=" flex justify-center mt-3 bg-green-700 text-white rounded-lg">
+                            <ul>
                                     @if(Session::has('Success'))
                                     <li>{{Session::get('Success')}}</li>
                                     @endif

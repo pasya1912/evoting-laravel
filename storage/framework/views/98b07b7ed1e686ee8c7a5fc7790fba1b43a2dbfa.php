@@ -27,7 +27,7 @@
                         <?php endif; ?>
                     <?php echo csrf_field(); ?>
                         <?php if($errors->any()): ?>
-                        <div class="flex justify-center mt-3 rounded-r-lg text-white bg-red-700">
+                        <div class="flex justify-center mt-3 rounded-lg text-white bg-red-700">
                             <ul>
                                 <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <li><?php echo e($error); ?></li>
@@ -35,12 +35,17 @@
                             </ul>
                         </div>
                         <?php endif; ?>
-                        <?php if(Session::has('Gagal') | Session::has('Success')): ?>
-                        <div class=" flex justify-center mt-3 bg-green-700 text-white rounded-r-lg">
+                        <?php if(Session::has('Gagal')): ?>
+                        <div class=" flex justify-center mt-3 bg-red-700 text-white rounded-lg">
                             <ul>
                                     <?php if(Session::has('Gagal')): ?>
                                     <li><?php echo e(Session::get('Gagal')); ?></li>
                                     <?php endif; ?>
+                            </ul>
+                        </div>
+                        <?php elseif(Session::has('Success')): ?>
+                        <div class=" flex justify-center mt-3 bg-green-700 text-white rounded-lg">
+                            <ul>
                                     <?php if(Session::has('Success')): ?>
                                     <li><?php echo e(Session::get('Success')); ?></li>
                                     <?php endif; ?>

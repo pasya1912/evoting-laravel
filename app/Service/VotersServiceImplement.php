@@ -1,6 +1,6 @@
 <?php
 namespace App\Service;
-use App\Voters;
+use Illuminate\Support\Facades\Cache;
 use App\Exports\PemilihExport;
 use App\Repository\PemilihRepository;
 use App\Repository\VotersRepository;
@@ -14,7 +14,8 @@ class VotersServiceImplement implements VotersService {
     }
     public function getVoters($request)
     {   try{
-        $query = $this->pemilihRepository->DB()->selectRaw('id,username,status_osis as text_osis,status_mpk as text_mpk,password');
+		$query = $this->pemilihRepository->DB()->selectRaw('id,username,status_osis as text_osis,status_mpk as text_mpk,password');
+
         }catch(Throwable $e)
         {
             abort(500);

@@ -15,7 +15,7 @@ class PemilihRepositoryImplement implements PemilihRepository{
     }
     public function WhereArray($data)
     {
-        return $this->db->where($data);
+        return Pemilih::where($data);
     }
     public function updateWhereUsername($username,$data)
     {

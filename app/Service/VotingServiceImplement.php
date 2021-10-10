@@ -1,5 +1,6 @@
 <?php
 namespace App\Service;
+
 use Illuminate\Support\Facades\Cache;
 use App\Kandidat;
 use App\Voting;
@@ -21,15 +22,14 @@ class VotingServiceImplement implements VotingService
     {
 
 
-            $result = $this->pemilihRepository->whereUsername($data->session()->get('token'),['status_osis','status_mpk'])->first();
+            $result = Cache::remember("getStatus_".$data->session()->get('token'),now()->addSeconds(3),function() use($data){return $this->pemilihRepository->whereUsername($data->session()->get('token'),['status_osis','status_mpk']);});
             $arr = array("osis"=>$result->status_osis,"mpk"=>$result->status_mpk);
 
             //Jika Ada Session           
-                $kandidat = Cache::remember('getKandidatVoting',now()->addMinutes(5),function(){
-                   $osis = array("osis"=>$this->kandidatRepository->getWhereType('osis')->toArray());
-                    $mpk = array("mpk"=>$this->kandidatRepository->getWhereType('mpk')->toArray());
-                    return array_merge($osis,$mpk);
-                });
+
+                   $osis = array("osis"=>Cache::remember('getKandidatOsis',now()->addMinutes(5),function(){ return $this->kandidatRepository->getWhereType('osis'); }));
+                    $mpk = array("mpk"=>Cache::remember('getKandidatMpk',now()->addMinutes(5),function(){ return $this->kandidatRepository->getWhereType('mpk'); }));
+                    $kandidat = array_merge($osis,$mpk);
             return ['status'=>$arr,'kandidat'=>$kandidat];
 
     }
@@ -77,7 +77,9 @@ class VotingServiceImplement implements VotingService
     }
     public function statusVoting($request)
     {
-        $result = $this->pemilihRepository->whereUsername($request->session()->get('token'),['status_osis','status_mpk'])->first();
+        $result = Cache::remember("getStatus_".$data->session()->get('token'),now()->addSeconds(3),function() use($request){
+            return $this->pemilihRepository->whereUsername($request->session()->get('token'),['status_osis','status_mpk']);
+        });
         if($result->status_osis == 2)
         {
             $result->status_osis = false;
