@@ -8,11 +8,32 @@ Teknologi Backend :
 1. PHP ( Laravel 8 )
 2. MySQL
 
-## Cara Pakai
+## Cara Pakai di Hosting
 1. Download Scriptnya
-2. Upload ke hosting , Jika lewat github harap install package nya dulu dengan cara composer install ( wajib punya akses ssh )
+2. Upload ke hosting , Jika lewat github harap install package nya dulu dengan cara composer install ( wajib punya akses ssh ), jika tidak bisa lewat upload biasa.
 3. jika memakai hosting cpanel, buka crontab lalu masukkan `php /path/to/laravel/artisan queue:work --sleep=3 --tries=3 --max-time=3600`
-4. Jika memakai VPS ikuti https://www.niagahoster.co.id/blog/cara-install-laravel-di-ubuntu/
+4. edit file .htaccess menjadi :
+
+```
+<IfModule mod_rewrite.c>
+
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ public/index.php [L]
+
+</IfModule>
+```
+5. Import laravel_pilketos.sql ke database.
+6. sukses !
+
+## Cara pakai di vps
+1. Install composer di vps
+4. Jika memakai VPS ikuti https://www.niagahoster.co.id/blog/cara-install-laravel-di-ubuntu/ ( pastikan document rootnya difolder public )
+Note : Jangan install laravelnya, karena sudah ada laravel, sebagai gantinya ketikan :
+`git clone https://github.com/pasya1912/evoting-laravel.git` lalu lanjutkan deh di folder evoting-laravel. kestep berikutnya.
+
 5. lalu buat user baru pada mysql server dengan mengijinkan semua permision ( user baru tapi punya akses admin / root )
 6. Buat database baru dengan user yang baru dibuat.
 5. import laravel_pilketos.sql ke mysql ( Bisa pakai adminer, maupun inport langsung pake command )
@@ -20,7 +41,11 @@ Teknologi Backend :
 7. lalu ketikan sudo nano .env, masukkan username,database,password dari database.
 8. Setelah itu sudah jadi deh.
 
-Jika ingin mempercepat pagespeed / performa / kecepatan website pakai library laravel/octane dapat meningkatkan kecepatan yang cukup tinggi, untuk tutorial penginstallan :
+
+
+Jika ingin mempercepat pagespeed / performa / kecepatan website pakai library laravel/octane dapat meningkatkan kecepatan yang cukup tinggi
+Reqruitment : PHP 8 ++, Upgrade php dulu jika belum php 8
+ untuk tutorial penginstallan :
 https://www.youtube.com/watch?v=H7bCbrF1yts ( Bahasa inggris, indian accent)
 
 
