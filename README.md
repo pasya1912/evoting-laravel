@@ -8,6 +8,22 @@ Teknologi Backend :
 1. PHP ( Laravel 8 )
 2. MySQL
 
+## Cara Pakai
+1. Download Scriptnya
+2. Upload ke hosting , Jika lewat github harap install package nya dulu dengan cara composer install ( wajib punya akses ssh )
+3. jika memakai hosting cpanel, buka crontab lalu masukkan `php /path/to/laravel/artisan queue:work --sleep=3 --tries=3 --max-time=3600`
+4. Jika memakai VPS ikuti https://www.niagahoster.co.id/blog/cara-install-laravel-di-ubuntu/
+5. lalu buat user baru pada mysql server dengan mengijinkan semua permision ( user baru tapi punya akses admin / root )
+6. Buat database baru dengan user yang baru dibuat.
+5. import laravel_pilketos.sql ke mysql ( Bisa pakai adminer, maupun inport langsung pake command )
+6. Jika download lewat github. copy .env.example ke .env.
+7. lalu ketikan sudo nano .env, masukkan username,database,password dari database.
+8. Setelah itu sudah jadi deh.
+
+Jika ingin mempercepat pagespeed / performa / kecepatan website pakai library laravel/octane dapat meningkatkan kecepatan yang cukup tinggi, untuk tutorial penginstallan :
+https://www.youtube.com/watch?v=H7bCbrF1yts ( Bahasa inggris, indian accent)
+
+
 # Fitur
 
 Voters :
@@ -38,14 +54,26 @@ Fitur dalam sisi Programming :
    Apasih queue ? jadi ini adalah fitur dari Laravel dimana kita bisa menjalankan proses/code dibalik layar dengan antrian. Nah real scenarionya ini seperti pada saat Voters ( pemilih ) melakukan voting, disitu Javascript melakukan ajax ke api /simpansuara. setelah itu langsung di masukkan ke antrian voting, sehingga wakut yang dibutuhkan pun lebih cepat, tidak harus menunggu sampai proses logic selesai. proses penyimpanan suara dan perubahan status vote dilakukan dibalik layar.
 6. Menggunakan Caching pada beberapa Query Database untuk menghemat penggunakan memory
    Coba bayangkan ada 1000-5000 orang yang melakukan voting secara bersamaan dalam waktu 1-3 detik ? itu akan membebani memmory dikarenakan code kita melakukan querying pada database 1000x-5000x dalam waktu 1-3 detik . nah disinilah Sistem Caching berguna, Sebagai contoh Query database untuk menampilkan kandidat disimpan dalam Cache selama 10 detik. nah karena menggunakan caching, Query kedatabase hanya sekali setiap 10 detik, baru setelah cache nya expired maka code tersebut akan melakukan query lagi sebanyak 1x setiap 10 detik.
+7. Security terjamin aman.
+   Karena saya seorang bug hutner jadi tentunya tau letak dimana bug biasanya ada. Ditambah lagi saya menggunakan framework laravel, dimana laravel ini sudah ada SQL Injection, dan XSS peventif nya. Lalu bug seperti double vote, dll sudah diperbaiki. Namun balik lagi tidak ada sistem yang aman.
 
 
 
-Pada presentasi kali ini saya menggunakan server VPS ubuntu 16.0.4 Apache Mysql-server. serta penggunaan supervisord untuk mengotomatisasi Queue.
+
+Pada presentasi kali ini saya menggunakan server VPS ubuntu 16.0.4 Apache Mysql-server. serta penggunaan supervisord untuk mengotomatisasi Queue ( queue worker ).
+Lalu pada server Ubuntu saya menggunakan Laravel Octane untuk memperbesar performa website sehingga load / pagespeednya lebih kencang lagi.
+
+`Laravel Octane supercharges your application's performance by serving your application using high-powered application servers, including Swoole and RoadRunner. Octane boots your application once, keeps it in memory, and then feeds it requests at supersonic speeds.`
 
 
 
-Jadi Kesimpulannya adalah Script Evoting OSIS dan MPK berbasis Laravel ini saya buat dengan code yang Efisien, Dapat diperbesar/perluas ( Extendible ), Dapat dipelihara ( maintainable ), serta Mudah dibaca orang lain.
-    
+
+Jadi Kesimpulannya adalah Script Evoting OSIS dan MPK berbasis Laravel ini saya buat dengan code yang Efisien, aman ( secure ), Dapat diperbesar/perluas, Dapat dipelihara ( maintainable ), serta Mudah dibaca orang lain.
+
+
+
+## Login admin
+Username : admin@gmail.com
+Password : admin1337
 
 Script ini bagian dari DoIT 5.0 UNSIKA dibawa oleh Rafli Pasya ( 1E Teknik Informatika )
