@@ -44,8 +44,11 @@ Note : Jangan install laravelnya, karena sudah ada laravel, sebagai gantinya ket
 
 
 Jika ingin mempercepat pagespeed / performa / kecepatan website pakai library laravel/octane dapat meningkatkan kecepatan yang cukup tinggi
+
 Reqruitment : PHP 8 ++, Upgrade php dulu jika belum php 8
+
  untuk tutorial penginstallan :
+
 https://www.youtube.com/watch?v=H7bCbrF1yts ( Bahasa inggris, indian accent)
 
 
