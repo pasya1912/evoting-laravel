@@ -89,12 +89,6 @@
 
 
                                                                     ?>
-                                                @if($data->password == null)
-                                                <?php $data->password = "<td class='text text-danger'>Belum diset</td>"?>
-                                                @else
-                                                <?php $data->password = "<td class='text text-success'>Telah diset</td>"?>
-                                                @endif
-                                                <tr>
                                                     <td width="10%">{{ $data->id }}</td>
                                                     @if($key<\Session::get('created'))
                                                     <td>{{$data->username}} <span class="badge bg-success h-25">NEW !</span></td>
@@ -104,11 +98,11 @@
                                                     <?php echo $data->text_osis; ?>
                                                     <?php echo $data->text_mpk; ?>
                                                     @if($data->password == null)
-                                                    <?php $data->password = "<td class='text text-danger'>Belum diset</td>"?>
+                                                    <?php $password = "<td class='text text-danger'>Belum diset</td>"?>
                                                     @else
-                                                    <?php $data->password = "<td class='text text-success'>Telah diset</td>"?>
+                                                    <?php $password = "<td class='text text-success'>Telah diset</td>"?>
                                                     @endif
-                                                    <?php echo $data->password; ?>
+                                                    <?php echo "test".$password; ?>
                                                 </tr>
                                                 @endforeach  	
                                             </tbody>

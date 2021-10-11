@@ -10,7 +10,7 @@ Teknologi Backend :
 
 ## Cara Pakai di Hosting
 1. Download Scriptnya
-2. Upload ke hosting , Jika lewat github harap install package nya dulu dengan cara composer install ( wajib punya akses ssh ), jika tidak bisa lewat upload biasa.
+2. Upload ke hosting , harap install package nya dulu dengan cara composer install ( wajib punya akses ssh ), jika tidak bisa lewat upload biasa.
 3. jika memakai hosting cpanel, buka crontab lalu masukkan `php /path/to/laravel/artisan queue:work --sleep=3 --tries=3 --max-time=3600`
 4. edit file .htaccess menjadi :
 
