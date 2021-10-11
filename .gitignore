@@ -12,4 +12,6 @@ yarn-error.log
 README.txt
 laravel-evoting.rar
 Zerboa - Evoting OSIS MPK Berbasis laravel - DOIT5.rar
-/framework/views/*.php
+/storage/framework/views/*.php
+/storage/framework/sessions
+/storage/framework/cache

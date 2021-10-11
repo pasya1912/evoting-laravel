@@ -102,7 +102,7 @@
                                                     @else
                                                     <?php $password = "<td class='text text-success'>Telah diset</td>"?>
                                                     @endif
-                                                    <?php echo "test".$password; ?>
+                                                    <?php echo $password; ?>
                                                 </tr>
                                                 @endforeach  	
                                             </tbody>
