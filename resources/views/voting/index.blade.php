@@ -14,7 +14,7 @@
 
   @foreach($kandidat['osis'] as $x)
 
-        <div class="col-md-3">
+        <div class="col-md-6 col-lg-4 col-12">
           <div class="card mx-auto mb-5" style="width: 16rem;">
              <img src="{{ asset('foto_kandidat/'.$x['foto'])}}" class="btn object-fill h-60 w-full transition duration-500 transform hover:scale-110"   data-toggle="modal" data-target="#modalFoto{{$x['id']}}"  style="transition: transform .2s;"alt="Foto" height="250">
                  <div class="card-body text-center">
@@ -84,7 +84,7 @@
     </div>
     <div class="row d-flex justify-content-center mt-3">
   @foreach($kandidat['mpk'] as $x)
-        <div class="col-md-3">
+        <div class="col-md-6 col-lg-4 col-12">
           <div class="card mx-auto mb-5" style="width: 16rem;">
           <img src="{{ asset('foto_kandidat/'.$x['foto'])}}" class="btn object-fill h-60 w-full transition duration-500 transform hover:scale-110"   data-toggle="modal" data-target="#modalFoto{{$x['id']}}"  style="transition: transform .2s;"alt="Foto" height="250">
                  <div class="card-body text-center">

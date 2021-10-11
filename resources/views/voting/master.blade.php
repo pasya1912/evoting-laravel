@@ -22,7 +22,7 @@ hr.solid {
     border-top: 2px solid #999;
 }
 </style>
-<body class="bg-homeBackground bg-no-repeat bg-cover">
+<body class="xl:bg-homeBackground bg-gradient-to-b from-blue-300 via-white to-blue-300 xl:bg-no-repeat xl:bg-cover">
 <div class="flex flex-col h-screen justify-between">
     <!-- Nav -->
     <nav class="bg-white shadow-lg">
