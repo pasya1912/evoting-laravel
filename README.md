@@ -1,7 +1,7 @@
 # Script Evoting OSIS & MPK Berbasis Laravel
 
 Teknologi Frontend :
-1. Mazer - Bootstrap 5 Admin Template by Ahmad Saugi
+1. Bootstrap 5 
 2. Tailwind CSS ( Voting Page )
 
 Teknologi Backend :
