@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-
+use Illuminate\Support\Facades\Cache;
 
 class VoteJobs implements ShouldQueue
 {
@@ -39,16 +39,19 @@ class VoteJobs implements ShouldQueue
      */
     public function handle()
     {
-        try{
+        Cache::lock('voteJobs')->block(10,function(){
+            try{
 
-            $data = [
-                'jumlahsuara' => $this->jumlahsuara+1
-            ];
-            $this->kandidatRepository->updateWhereId($this->idkandidat,$data);
-
-            }catch(Exception $e){
-                Log::error($e->getMessage());
-                }
+                $data = [
+                    'jumlahsuara' => $this->jumlahsuara+1
+                ];
+                $this->kandidatRepository->updateWhereId($this->idkandidat,$data);
     
+                }catch(Exception $e){
+                    Log::error($e->getMessage());
+                    }
+        
+        });
+
     }
 }
