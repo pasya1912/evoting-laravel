@@ -1,7 +1,9 @@
 <?php
 namespace App\Service;
 use Illuminate\Support\Facades\Cache;
-use App\Exports\PemilihExport;
+use App\Imports\VotersImport;
+//session facades
+use Illuminate\Support\Facades\Session;
 use App\Repository\PemilihRepository;
 use App\Repository\VotersRepository;
 use Maatwebsite\Excel\Facades\Excel;
@@ -83,11 +85,22 @@ class VotersServiceImplement implements VotersService {
 
 		
     	}
-		\Session::flash('created', $i); 
-		\Session::flash('alert', "Success Create ".$i." Token"); 
+		Session::flash('created', $i); 
+		Session::flash('alert', "Success Create ".$i." Token"); 
 			return redirect('/admin/voters');
 
     }
+	//method to import voters from excels
+	public function importVoters($data)
+	{
+		$file = $data->file('file');
+		$nama_file = rand().$file->getClientOriginalName();
+		$file->move('file_voters',$nama_file);
+		Excel::import(new VotersImport, public_path('/file_voters/'.$nama_file));
+		Session::flash('alert', "Success Import Voters"); 
+		return redirect('/admin/voters');
+	}
+
     public function deleteVoters($data)
     {
         $kriteria = $data['kriteria'];

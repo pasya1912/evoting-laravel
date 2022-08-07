@@ -23,6 +23,7 @@ Route::get('/admin','DashboardController@index')->name('home');
 Route::post('/admin/postlogin','AuthController@postlogin');
 Route::get('/admin/setting','SettingController@index')->name('admin.setting');
 Route::post('/admin/setting','SettingController@save')->name('admin.setting.save');
+Route::get('/admin/logout','AuthController@logout')->name('admin.logout');
 
 //Route Kandidat
 Route::get('/admin/kandidat','KandidatController@index')->name('admin.kandidat');
