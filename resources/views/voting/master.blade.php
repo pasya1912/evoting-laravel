@@ -22,36 +22,28 @@ hr.solid {
     border-top: 2px solid #999;
 }
 </style>
-<body class="xl:bg-homeBackground bg-gradient-to-b from-blue-300 via-white to-blue-300 xl:bg-no-repeat xl:bg-cover">
-<div class="flex flex-col h-screen justify-between">
+<body>
+    <div class="flex flex-col h-screen justify-between">
     <!-- Nav -->
-    <nav class="bg-white shadow-lg">
-			<div class="flex mobile:justify-center mx-auto px-4">
-					<div class="flex space-x-7">
-						<div class="flex">
-							<!-- Website Logo -->
-							<a href="#" class="flex items-center py-4 px-2">
-								<img src="img/Smanegeri36.gif" alt="Logo" class="h-8 w-8 mr-2">
-								<span class="font-semibold text-gray-500  text-lg">E-VOTING</span>
-							</a>
-						</div>
-                    </div>
+    <nav class="bg-white shadow-sm">
+        <div class="flex mobile:justify-center mx-auto px-4">
+            <div class="flex space-x-7">
+                <div class="flex">
+                    <!-- Website Logo -->
+                    <a href="#" class="flex items-center py-4 px-2">
+                        <img src="img/Smanegeri36.gif" alt="Logo" class="h-8 w-8 mr-2">
+                        <span class="font-semibold text-gray-500  text-lg">E-VOTING</span>
+                    </a>
+                </div>
             </div>
-		</nav>
+        </div>
+    </nav>
 <div class="container">
    <!-- End Nav -->
 @yield('konten')
 </div>
-<footer class="footer bg-transparent relative pt-1 border-b-2 border-t-2 border-gray-300 ">
-    <div class="container">
-        <div class="flex mt-2 border-gray-300 justify-center">
-            <div class="mobile:w-2/3 text-center py-6">
-                <p class="text-sm text-red-700 font-extrabold mb-2">
-                    Designed by someone
-                </p>
-            </div>
-        </div>
-    </div>
+<footer>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f3f4f5" fill-opacity="1" d="M0,160L48,170.7C96,181,192,203,288,192C384,181,480,139,576,133.3C672,128,768,160,864,160C960,160,1056,128,1152,106.7C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
 </footer>
 </div>
 </body>

@@ -42,10 +42,9 @@ class TimeToVoteMiddleware
             $time = time();
             if($time>=$hasil['startdate']){
                 if($time<=$hasil['enddate']){
-
-            return $next($request);
-                }else{
                     return response()->view('errors.voteSelesai');
+                }else{
+                    return $next($request);
                 }
             }else{
 
