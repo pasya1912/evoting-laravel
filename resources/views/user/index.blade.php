@@ -1,12 +1,12 @@
 @extends('user.layout')
 @section('title','Welcome to E-Voting')
 @section('page')
-        <div class="w-1/3 tablet:w-3/5 mobile:w-11/12 mt-10 border-t-12 bg-white mb-3 rounded-lg shadowww">
-        <div>
-            <span class="flex justify-center text-transparent bg-clip-text bg-gradient-to-br from-blue-300 to-blue-900 font-bold mobile:text-small tablet:text-lg text-2xl">Selamat Datang</span>
+        <div class="w-full h-100 mt-10 border-t-12 bg-white mb-3 rounded-lg shadowww">
+            <div>
+                <span class="flex justify-center text-transparent bg-clip-text bg-gradient-to-br from-blue-300 to-blue-900 font-bold mobile:text-small tablet:text-lg text-2xl">Selamat Datang</span>
             </div>
             <div>
-            <img class="object-contain mobile:h-44 h-64 pt-8 mt-10  w-full" src='/img/Smanegeri36.gif'></img>
+                <img class="object-contain mobile:h-44 h-64 pt-8 mt-10  w-full" src='/img/Smanegeri36.gif'></img>
             </div>
             <div class="flex p-8 border-t-12 justify-center">
                 <div class="mb-4 w-1/2">

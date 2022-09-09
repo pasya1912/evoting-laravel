@@ -6,15 +6,13 @@ class UserController extends Controller
 {
     protected $userService;
 
-           function __construct(UserService $userService)
+    function __construct(UserService $userService)
     {
         $this->userService = $userService;
-
     }
     public function index()
     {
-        $this->userService->cekSession();
-        return view('user.index');
+        return redirect("/voting");
     }
     public function votinglogin()
     {
